@@ -5,22 +5,28 @@
  */
 package teoriadelainformacion;
 
+import java.util.LinkedHashMap;
+import java.util.Map;
+
 
 /**
  *
  * @author lucho
+ * @param <T>
  */
-public class DistProbSimple extends DistProb{
+public class DistProbSimple<T extends Comparable<T>> extends DistProb{
     private int nEventos;
     private int[] ocurrencias;
+    private T[] eventTag;
     private int totalOcurrencias;
     private boolean desvioChanged;
     private float desvio=-1;
     
 
-    public DistProbSimple(int nEventos) {
+    public DistProbSimple(int nEventos, T[] etiquetas) {
         this.nEventos = nEventos;
         ocurrencias= new int[nEventos];
+        eventTag= etiquetas;
     }
     
     public boolean addOcurrencia(int evento, int cantOcurrencias){
@@ -40,9 +46,12 @@ public class DistProbSimple extends DistProb{
         return -1;
     }
     
-    public int[] getFrecuencia() {
-    	
-    	return ocurrencias;
+    public Map<T,Integer> getFrecuencia() {
+    	LinkedHashMap<T,Integer> outMap= new LinkedHashMap();
+        for (int i = 0; i < ocurrencias.length; i++) {
+            outMap.put(eventTag[i], ocurrencias[i]);
+        }
+    	return outMap;
     }
     
     public int getNEventos(){
@@ -68,14 +77,6 @@ public class DistProbSimple extends DistProb{
             desvioChanged = false;
         }
         return desvio;
-    }
-    
-    public double[] getArrayDistribution(){
-        double[] outArray= new double[nEventos];
-        for(int i=0;i<ocurrencias.length;i++){
-            outArray[i]=(double)ocurrencias[i]/(double)totalOcurrencias;
-        }
-        return outArray;
     }
     
 }

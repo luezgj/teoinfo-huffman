@@ -17,14 +17,13 @@ import org.jfree.data.statistics.HistogramType;
  *
  * @author lucho
  */
-public class DibujadorHistograma {
+public class Drawer {
     
-    public static void dibujarDistribucion(String nombre,String etiquetaX, String etiquetaY,DistProbSimple dist,JPanel panel){
+    public static void dibujarDistribucion(String nombre,String etiquetaX, String etiquetaY,Imagen img,JPanel panel){
         HistogramDataset datos=new HistogramDataset();
         datos.setType(HistogramType.FREQUENCY);
-        double [] arre = {10,10,30,40};
-        //datos.addSeries("Numero de pixels", dist.getArrayDistribution(), 256, 0, 255);
-        datos.addSeries("Numero de pixels", arre, 4);
+        double [] arre = img.getDPixeles();
+        datos.addSeries("Numero de pixels", arre, Imagen.NRO_DE_COLORES);
         JFreeChart chart= ChartFactory.createHistogram(nombre, etiquetaX, etiquetaY, datos, PlotOrientation.VERTICAL, true, true, false);
         panel.removeAll();
         panel.repaint();

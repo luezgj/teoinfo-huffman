@@ -8,7 +8,7 @@ import java.util.HashMap;
 import java.util.Vector;
 
 
-public class Codificacion {
+public class Codificador<T> {
 
 	public static void generarBits(char num)
 	{
@@ -23,12 +23,12 @@ public class Codificacion {
 		}
 	}
 	
-	public static String generarCodificacion(Vector<String> mensaje, HashMap<String,String[]> codificacion )
+	public String codificar(Vector<T> mensaje, HashMap<T,String[]> codificacion )
 	{
 		String resultado = "";
 		char buffer = 0;
 		int cant_digitos = 0;
-		for (String simbolo : mensaje) {
+		for (T simbolo : mensaje) {
 			String[] codigo = codificacion.get(simbolo);
 			for (String bit : codigo) {
 				
@@ -53,4 +53,5 @@ public class Codificacion {
 		
 		return resultado;
 	}
+        
 }

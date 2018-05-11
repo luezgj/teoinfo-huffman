@@ -12,6 +12,7 @@ public class Imagen {
     public Imagen(String dir){
         try {
             img = ImageIO.read(new File(dir));
+            System.out.println(img.getColorModel());
         } 
         catch (IOException e) {
             System.out.println(e.getMessage());
@@ -19,7 +20,7 @@ public class Imagen {
     }
     
     public Imagen(int width, int height){
-        img= new BufferedImage(width, height, ?);
+        img= new BufferedImage(width, height, BufferedImage.TYPE_INT_BGR);
     }
     
     public int getSizeX(){
@@ -38,10 +39,22 @@ public class Imagen {
         return pixelsArray;
     }
     
-    public DistProbSimple getDistribucion(){
+    public double[] getDPixeles(){
+        double[] outArray=new double[img.getWidth()*img.getHeight()];
+        int[] pixelsArray=getPixeles();
+        for (int i = 0; i < pixelsArray.length; i++) {
+            outArray[i] = pixelsArray[i];
+        }
+        return outArray;
+    }
+    
+    public DistProbSimple<Integer> getDistribucion(){
         int [] pixeles=getPixeles();
-        
-        DistProbSimple salida = new DistProbSimple(NRO_DE_COLORES);
+        Integer [] etiquetas = new Integer[256];
+        for (int i = 0; i < etiquetas.length; i++) {
+            etiquetas[i]=i;
+        }
+        DistProbSimple<Integer> salida = new DistProbSimple(NRO_DE_COLORES,etiquetas);
         for (int i=0; i < pixeles.length; i++){
             salida.addOcurrencia(pixeles[i], 1);
         }
