@@ -21,7 +21,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     private void init() {
         Imagen img=new Imagen("Imagenes/Will(Original).bmp");
-        DibujadorHistograma.dibujarDistribucion("Distribucion de la imagen original","escala","frecuencia",img.getDistribucion(), histogramaPanel);
+        Drawer.dibujarDistribucion("Distribucion de la imagen original","escala","frecuencia",img, histogramaPanel);
     }
     
     /**
