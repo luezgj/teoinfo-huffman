@@ -1,8 +1,5 @@
 package teoriadelainformacion;
 
-import java.util.HashMap;
-import java.util.Hashtable;
-import java.util.Set;
 
 public class mainTeoInf {
 
