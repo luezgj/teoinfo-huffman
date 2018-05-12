@@ -53,6 +53,11 @@ public class InformacionArchivo<T extends Comparable<T>> {
     public void setMensaje(String mensaje) {
         this.mensaje = mensaje;
     }
+
+    @Override
+    public String toString() {
+        return "InformacionArchivo{" + "width=" + width + ", height=" + height + ", mensaje=" + mensaje + '}';
+    }
     
     
 }

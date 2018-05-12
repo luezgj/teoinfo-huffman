@@ -12,7 +12,6 @@ public class Imagen {
     public Imagen(String dir){
         try {
             img = ImageIO.read(new File(dir));
-            System.out.println(img.getColorModel());
         } 
         catch (IOException e) {
             System.out.println(e.getMessage());
