@@ -9,6 +9,13 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -17,9 +24,26 @@ import java.util.logging.Logger;
  * @author lucho
  */
 public class ManejadorArchivos {
-    /*public static <T extends Comparable <T>> boolean guardarEnArchivo(String dir, InformacionArchivo info){
-    
-    }*/
+    public static <T extends Comparable <T>> void guardarEnArchivo(String dir, InformacionArchivo<T> info){
+        Charset utf8 = StandardCharsets.UTF_8;
+        
+        String widthYH=String.valueOf(info.getWidth())+"-"+String.valueOf(info.getHeight());
+        
+        String probabilidades="";
+        Map<T,Integer> frecuencias=info.getDistribucion().getFrecuencia();
+        for (Map.Entry<T, Integer> entry : frecuencias.entrySet()) {
+            if(entry.getValue()!=0){
+                probabilidades+="-"+entry.getKey().toString()+","+entry.getValue().toString();
+            }
+        }
+        
+        List<String> lines = Arrays.asList(widthYH, probabilidades, info.getMensaje());
+        try {
+            Files.write(Paths.get(dir), lines);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
     
     public static InformacionArchivo leerArchivo(String dir){
         try {

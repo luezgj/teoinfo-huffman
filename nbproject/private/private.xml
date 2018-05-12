@@ -3,8 +3,19 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/lucho/NetBeansProjects/TInfo/src/teoriadelainformacion/CodificacionHuffman.java</file>
-            <file>file:/home/lucho/NetBeansProjects/TInfo/src/teoriadelainformacion/Imagen.java</file>
+            <file>file:/home/lucho/NetBeansProjects/teoinfo-huffman/src/teoriadelainformacion/Nodo.java</file>
+            <file>file:/home/lucho/NetBeansProjects/teoinfo-huffman/src/teoriadelainformacion/GestorImagenes.java</file>
+            <file>file:/home/lucho/NetBeansProjects/teoinfo-huffman/src/teoriadelainformacion/DistProbSimple.java</file>
+            <file>file:/home/lucho/NetBeansProjects/teoinfo-huffman/src/teoriadelainformacion/mainTeoInf.java</file>
+            <file>file:/home/lucho/NetBeansProjects/teoinfo-huffman/src/teoriadelainformacion/DistProbConjuntaIndep.java</file>
+            <file>file:/home/lucho/NetBeansProjects/teoinfo-huffman/src/teoriadelainformacion/ManejadorArchivos.java</file>
+            <file>file:/home/lucho/NetBeansProjects/teoinfo-huffman/src/teoriadelainformacion/VentanaPrincipal.java</file>
+            <file>file:/home/lucho/NetBeansProjects/teoinfo-huffman/src/teoriadelainformacion/Drawer.java</file>
+            <file>file:/home/lucho/NetBeansProjects/teoinfo-huffman/src/teoriadelainformacion/DistProb.java</file>
+            <file>file:/home/lucho/NetBeansProjects/teoinfo-huffman/src/teoriadelainformacion/Imagen.java</file>
+            <file>file:/home/lucho/NetBeansProjects/teoinfo-huffman/src/teoriadelainformacion/Codificador.java</file>
+            <file>file:/home/lucho/NetBeansProjects/teoinfo-huffman/src/teoriadelainformacion/CodificacionHuffman.java</file>
+            <file>file:/home/lucho/NetBeansProjects/teoinfo-huffman/src/teoriadelainformacion/InformacionArchivo.java</file>
         </group>
     </open-files>
 </project-private>
