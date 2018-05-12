@@ -13,15 +13,27 @@ import java.util.List;
  * @author lucho
  */
 public class Decodificador {
-    public static <T extends Comparable<T>> List<T> decodificar(List<String> mensajeCodificado, DistProbSimple<T> probabilidades){
+    public static <T extends Comparable<T>> List<T> decodificar(String mensajeCodificado,int cantSimbolos ,DistProbSimple<T> probabilidades){
         List<T> decodificado= new LinkedList();
         
-        Nodo arbolCodigo= CodificacionHuffman.generarArbol(probabilidades);
-        
-        for(String codigo: mensajeCodificado){
-            
+        Nodo<T> arbolCodigo = CodificacionHuffman.generarArbol(probabilidades);
+        int cantSimbDecodificados=0;
+        for(int i=0;i<mensajeCodificado.length();i++){ //Por cada bit
+            Nodo<T> auxNodo = arbolCodigo;
+            char c = mensajeCodificado.charAt(i);
+            if(c=='1'){
+                auxNodo=auxNodo.getIzq();
+            }else{
+                auxNodo=auxNodo.getDer();
+            }
+            if(auxNodo.esHoja()){
+                decodificado.add(auxNodo.getSimbolo());
+                auxNodo=arbolCodigo;
+                if(++cantSimbDecodificados==cantSimbolos){
+                    return decodificado;
+                }
+            }        
         }
-        
         return decodificado;
     }
 }

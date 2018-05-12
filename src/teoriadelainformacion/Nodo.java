@@ -54,4 +54,14 @@ public class Nodo<T extends Comparable<T>> implements Comparable<Nodo<T>> {
 
         return simbolo.compareTo(nodo.getSimbolo());
     }
+
+    public Nodo<T> getDer() {
+        return der;
+    }
+
+    public Nodo<T> getIzq() {
+        return izq;
+    }
+    
+    
 }
