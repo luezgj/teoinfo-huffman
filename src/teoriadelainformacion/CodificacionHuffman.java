@@ -1,22 +1,21 @@
 package teoriadelainformacion;
 
 import java.util.HashMap;
-import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.PriorityQueue;
 
-public class CodificacionHuffman <T extends Comparable<T>> {
+public class CodificacionHuffman {
 	
-	public HashMap<T,String[]> obtenerCodigo(DistProbSimple<T> distribucion){
+	public static <T extends Comparable<T>> HashMap<T,String[]> obtenerCodigo(DistProbSimple<T> distribucion){
 		
-		Nodo<T> raiz = generarArbol(distribucion.getFrecuencia());
+		Nodo<T> raiz = generarArbol(distribucion);
 		
 		HashMap<T,String[]> codificacion = getHashMap(raiz);
 		
 		return codificacion;
 	}
 	
-        private HashMap<T,String[]> getHashMap(Nodo<T> raiz){
+        private static <T extends Comparable<T>> HashMap<T,String[]> getHashMap(Nodo<T> raiz){
 		
 		HashMap<T,String[]> codificacion = new HashMap<>();
 		
@@ -25,7 +24,7 @@ public class CodificacionHuffman <T extends Comparable<T>> {
 		return codificacion;
 	}
 	
-	private void completarHashMap(Nodo<T> nodo, String cod,HashMap<T,String[]> codificacion){
+	private static <T extends Comparable<T>> void completarHashMap(Nodo<T> nodo, String cod,HashMap<T,String[]> codificacion){
 		
 		if (!nodo.esHoja()) {
 			completarHashMap(nodo.izq, cod + '1',codificacion);
@@ -38,10 +37,10 @@ public class CodificacionHuffman <T extends Comparable<T>> {
 		}
 	}
 	
-	public Nodo<T> generarArbol(Map<T,Integer> Distribucion) {
-		PriorityQueue<Nodo<T>> colaPrioridad = new PriorityQueue<Nodo<T>>();
+	public static <T extends Comparable<T>> Nodo<T> generarArbol(DistProbSimple<T> distribucion) {
+		PriorityQueue<Nodo<T>> colaPrioridad = new PriorityQueue();
 		
-		for (Map.Entry<T, Integer> pair : Distribucion.entrySet()) {
+		for (Map.Entry<T, Integer> pair : distribucion.getFrecuencia().entrySet()) {
 			if (pair.getValue() != 0)
 				colaPrioridad.add(new Nodo<T>(pair.getKey(),pair.getValue(),null,null));
 		}
@@ -52,7 +51,7 @@ public class CodificacionHuffman <T extends Comparable<T>> {
 		while (colaPrioridad.size() > 1) {
 			Nodo<T> nodoIzq = colaPrioridad.poll();
 			Nodo<T> nodoDer = colaPrioridad.poll();
-			Nodo<T> padre = new Nodo<T>(nodoIzq.frecuencia + nodoDer.frecuencia,nodoIzq,nodoDer);
+			Nodo<T> padre = new Nodo(nodoIzq.frecuencia + nodoDer.frecuencia,nodoIzq,nodoDer);
 			colaPrioridad.add(padre);
 		}
 		

@@ -5,10 +5,10 @@ package teoriadelainformacion;
  * @author Nicolas Rago
  */
 import java.util.HashMap;
-import java.util.Vector;
+import java.util.List;
 
 
-public class Codificador<T> {
+public class Codificador {
 
 	public static void generarBits(char num)
 	{
@@ -23,7 +23,7 @@ public class Codificador<T> {
 		}
 	}
 	
-	public String codificar(Vector<T> mensaje, HashMap<T,String[]> codificacion )
+	public static <T> String codificar(List<T> mensaje, HashMap<T,String[]> codificacion )
 	{
 		String resultado = "";
 		char buffer = 0;
@@ -33,7 +33,7 @@ public class Codificador<T> {
 			for (String bit : codigo) {
 				
 					buffer = (char) (buffer << 1);
-					if(bit == "1")
+					if(bit.equals("1"))
 					{
 						buffer = (char) (buffer | 1);
 					}
