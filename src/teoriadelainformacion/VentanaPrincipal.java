@@ -5,6 +5,8 @@
  */
 package teoriadelainformacion;
 
+import org.jfree.chart.JFreeChart;
+
 /**
  *
  * @author lucho
@@ -21,7 +23,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     private void init() {
         Imagen img=new Imagen("Imagenes/Will(Original).bmp");
-        Drawer.dibujarDistribucion("Distribucion de la imagen original","escala","frecuencia",img, histogramaPanel);
+        JFreeChart histograma=Drawer.generarHistograma("Distribucion de la imagen original","escala de gris","cant pixels",img);
+        Drawer.dibujarDistribucion(histograma, histogramaPanel);
+        Drawer.guardarPNG(histograma, "histograma.jpg");
     }
     
     /**
